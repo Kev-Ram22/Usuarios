@@ -1,0 +1,73 @@
+<div class="container mt-4">
+    @if (loading) {
+      <div class="text-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    } @else if (user) {
+      <div class="card">
+        <div class="card-header">
+          <h2>{{ user.name }}</h2>
+        </div>
+        <div class="card-body">
+          <p><strong>Username:</strong> {{ user.username }}</p>
+          <p><strong>Email:</strong> {{ user.email }}</p>
+          <p><strong>Teléfono:</strong> {{ user.phone }}</p>
+          <p><strong>Sitio web:</strong> {{ user.website }}</p>
+          <p><strong>Dirección:</strong> {{ user.address.street }}, {{ user.address.suite }}, {{ user.address.city }}, {{ user.address.zipcode }}</p>
+          
+          <button (click)="toggleCompanyInfo()" class="btn btn-secondary mb-3">
+            {{ showCompanyInfo ? 'Ocultar' : 'Mostrar' }} información de la empresa
+          </button>
+          
+          @if (showCompanyInfo) {
+            <div class="card card-body mb-3">
+              <h5>Empresa</h5>
+              <p><strong>Nombre:</strong> {{ user.company.name }}</p>
+              <p><strong>Catch Phrase:</strong> {{ user.company.catchPhrase }}</p>
+              <p><strong>BS:</strong> {{ user.company.bs }}</p>
+            </div>
+          }
+          
+          <button (click)="loadPosts()" class="btn btn-info mb-3">
+            {{ showPosts ? 'Ocultar' : 'Mostrar' }} publicaciones
+          </button>
+          
+          @if (postsLoading) {
+            <div class="text-center">
+              <div class="spinner-border spinner-border-sm" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          }
+          
+          @if (showPosts && posts.length > 0) {
+            <div class="card card-body">
+              <h5>Publicaciones</h5>
+              <ul class="list-group">
+                @for (post of posts; track post.id) {
+                  <li class="list-group-item">
+                    <h6>{{ post.title }}</h6>
+                    <p>{{ post.body }}</p>
+                  </li>
+                }
+              </ul>
+            </div>
+          }
+          
+          <div class="mt-3">
+            <a routerLink="/usuarios" class="btn btn-primary">Volver al listado</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-3">
+        <a [routerLink]="['/usuario', user.id, 'posts']" 
+           class="btn btn-info">
+          <i class="fas fa-newspaper me-1"></i> Ver Publicaciones
+        </a>
+      </div>
+      
+    }
+  </div>
