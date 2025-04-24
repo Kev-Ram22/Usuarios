@@ -1,0 +1,12 @@
+.list-group-item {
+    border-left: 4px solid #0d6efd;
+    transition: transform 0.2s;
+    
+    &:hover {
+      transform: translateX(5px);
+    }
+    
+    h5 {
+      color: #0d6efd;
+    }
+  }

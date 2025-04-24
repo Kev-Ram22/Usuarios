@@ -1,0 +1,42 @@
+.user-card {
+    transition: all 0.3s ease;
+    border-radius: 15px;
+    overflow: hidden;
+    
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+  
+    .bg-gradient-primary {
+      background: linear-gradient(135deg, #3f87a6, #ebf8e1);
+    }
+  
+    .user-avatar {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border: 3px solid white !important;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  
+    .card-header {
+      border-bottom: none;
+    }
+  
+    .list-unstyled {
+      i {
+        width: 20px;
+        text-align: center;
+      }
+      
+      a:hover {
+        text-decoration: underline !important;
+      }
+    }
+  }

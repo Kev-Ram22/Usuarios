@@ -1,0 +1,24 @@
+<div class="container mt-4">
+    <h2>Publicaciones del Usuario #{{ userId }}</h2>
+    
+    @if (loading) {
+      <div class="text-center">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    } @else {
+      <div class="list-group mt-3">
+        @for (post of posts; track post.id) {
+          <div class="list-group-item mb-3">
+            <h5>{{ post.title }}</h5>
+            <p>{{ post.body }}</p>
+          </div>
+        }
+      </div>
+      <a [routerLink]="'/usuario/' + userId" class="btn btn-primary mt-3">
+        Volver al perfil
+      </a>
+      
+    }
+  </div>
